@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 public class EstudianteController {
-
+ 
     @Autowired
     private EstudianteService estudianteService;
 
@@ -63,5 +63,5 @@ public class EstudianteController {
     public void eliminarEstudiante (@PathVariable("id") Integer id){
         estudianteService.elimarEstudiante(id);
     }
- 
+
 }
