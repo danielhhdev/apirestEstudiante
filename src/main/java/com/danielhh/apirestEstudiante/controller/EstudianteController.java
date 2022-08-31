@@ -62,6 +62,6 @@ public class EstudianteController {
     @DeleteMapping("api/estudiante/{id}")
     public void eliminarEstudiante (@PathVariable("id") Integer id){
         estudianteService.elimarEstudiante(id);
-    }
+    } 
 
 }
