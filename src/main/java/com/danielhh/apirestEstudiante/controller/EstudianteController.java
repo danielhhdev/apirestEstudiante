@@ -1,14 +1,18 @@
 package com.danielhh.apirestEstudiante.controller;
 
 import com.danielhh.apirestEstudiante.model.Estudiante;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.danielhh.apirestEstudiante.service.EstudianteService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class EstudianteController {
+
+    @Autowired
+    private EstudianteService estudianteService;
 
     @GetMapping("api/estudiantes")
     public List<Estudiante> obtenerEstudiantes(){
@@ -33,6 +37,31 @@ public class EstudianteController {
         return listaEstudiante;
     }
 
+    @PostMapping("api/estudiante")
+    public Estudiante guardarEstudiante(@RequestBody Estudiante estudiante){
+        System.out.println(estudiante);
+        estudianteService.guardarEstudiante(estudiante);
+        return estudiante;
+    }
 
+    @GetMapping("api/lista")
+    public List<Estudiante> obtener(){
+        return estudianteService.obtenerTodos();
+    }
+
+    @GetMapping("api/estudiantes/{id}")
+    public Estudiante obtenerEstudiante(@PathVariable("id") Integer id){
+        return estudianteService.obtenerEstudiante(id);
+    }
+    @PutMapping("api/estudiante")
+    public void actualizarEstudiante(@RequestBody Estudiante estudiante){
+        System.out.println(estudiante);
+        estudianteService.actualizarEstudiante(estudiante);
+    }
+
+    @DeleteMapping("api/estudiante/{id}")
+    public void eliminarEstudiante (@PathVariable("id") Integer id){
+        estudianteService.elimarEstudiante(id);
+    }
 
 }
