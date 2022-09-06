@@ -11,6 +11,7 @@ public class Estudiante {
     private String nombres;
     private String apellidos;
     private String email;
+    
     private Double nota;
 
     public Estudiante() {
